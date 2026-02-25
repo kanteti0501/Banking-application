@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            padding-top: 40px;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 420px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        .btn-group {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            width: 48%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .cancel-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+        .cancel-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>User Registration</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label>Username</label>
+        <input type="text" name="username" maxlength="150" required>
+
+        <label>Password</label>
+        <input type="password" name="password" maxlength="128" required>
+
+        <label>First Name</label>
+        <input type="text" name="first_name" maxlength="150" required>
+
+        <label>Last Name</label>
+        <input type="text" name="last_name" maxlength="150" required>
+
+        <label>Email</label>
+        <input type="email" name="email" maxlength="254" required>
+
+        <label>Phone</label>
+        <input type="tel" name="phone" pattern="[0-9]{10}" placeholder="10 digit phone" required>
+
+        <label>Role</label>
+        <select name="role" required>
+            <option value="">Select Role</option>
+            <option value="ADMIN">Admin</option>
+            <option value="USER">User</option>
+        </select>
+
+        <label>Is Superuser</label>
+        <select name="is_superuser">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+
+        <label>Is Staff</label>
+        <select name="is_staff">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+
+        <label>Is Active</label>
+        <select name="is_active">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+
+        <label>KYC Verified</label>
+        <select name="kyc_verified">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+
+        <label>Last Login</label>
+        <input type="datetime-local" name="last_login">
+
+        <label>Date Joined</label>
+        <input type="datetime-local" name="date_joined" required>
+
+        <label>Date</label>
+        <input type="datetime-local" name="date" required>
+
+        <div class="btn-group">
+            <button type="submit" class="submit-btn">Submit</button>
+            <button type="reset" class="cancel-btn">Cancel</button>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
